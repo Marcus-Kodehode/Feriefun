@@ -5,7 +5,7 @@ import styles from './Nav.module.css'
 export default function Nav() {
   const [open, setOpen] = useState(false)
   const toggleRef = useRef(null)
-  const menuRef = useRef(null)
+  const menuRef   = useRef(null)
 
   const toggleMenu = () => setOpen(o => !o)
 
@@ -23,7 +23,7 @@ export default function Nav() {
     }
   }, [open])
 
-  // Lytt på Escape og Tab for tilgangskontroll
+  // Håndter Escape + Tab for å holde fokus i menyen
   useEffect(() => {
     const onKey = e => {
       if (e.key === 'Escape' && open) {
@@ -31,12 +31,10 @@ export default function Nav() {
         toggleRef.current?.focus()
       }
       if (e.key === 'Tab' && open && menuRef.current) {
-        const focusable = Array.from(
-          menuRef.current.querySelectorAll('a, button')
-        ).filter(el => !el.disabled)
-        if (!focusable.length) return
-        const first = focusable[0]
-        const last = focusable[focusable.length - 1]
+        const items = Array.from(menuRef.current.querySelectorAll('a, button'))
+          .filter(el => !el.disabled)
+        const first = items[0]
+        const last  = items[items.length - 1]
         if (!e.shiftKey && document.activeElement === last) {
           e.preventDefault(); first.focus()
         }
@@ -118,7 +116,7 @@ export default function Nav() {
         </nav>
       </header>
 
-      {/* Bakgrunnsoverlegg når meny er åpen */}
+      {/* Bakgrunnsoverlegg når menyen er åpen */}
       {open && <div className={styles.overlay} onClick={toggleMenu} />}
     </>
   )

@@ -72,3 +72,16 @@
     transform: translateY(0);
   }
 }
+/* 7. ScrollToTop-knapp i menyen */
+.scrollToTop {
+    position: absolute;
+    bottom: 2rem;
+    right: 50%;
+    transform: translateX(50%);
+    z-index: 1101;
+  }
+  
+  @media (min-width: 769px) {
+    /* skjul den på desktop */
+    .scrollToTop { display: none; }
+  }
