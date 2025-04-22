@@ -1,0 +1,74 @@
+/* src/components/MoreInfo/MoreInfo.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+.moreInfoSection {
+  padding: 4rem 2rem;
+  background: #111228;
+  color: #e0e0e0;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.heading {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  color: #ff6b6b;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 8px rgba(255,107,107,0.8);
+  animation: fadeInDown 0.8s ease-out both;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-size: 1.125rem;
+  animation: fadeInUp 0.8s 0.3s ease-out both;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.content p {
+  margin-bottom: 1.5rem;
+}
+
+.tagline {
+  font-style: italic;
+  color: #f8ff6b;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.25rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.subheading {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.75rem;
+  color: #6b6bff;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 6px rgba(107,107,255,0.6);
+  text-align: center;
+  animation: fadeInDown 0.8s both;
+}
+
+/* Animations (kopiert fra tidligere) */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
