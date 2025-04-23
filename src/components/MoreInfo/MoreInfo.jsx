@@ -9,8 +9,8 @@ export default function MoreInfo() {
 
       <div className={styles.content}>
         <p>
-          NapFlix started with one very strange nap. In a cramped apartment in Warsaw,
-          Polish neuroscientist‑turned‑sound‑designer Olliv Mikaoj passed out on his
+          NapFlix started with one very strange nap. In a cramped apartment in Kaskö,
+          Finnish neuroscientist‑turned‑sound‑designer Olliv Mikaoj passed out on his
           MIDI controller after 72 straight hours of composing ambient soundscapes.
           When he came to, he swore he’d just binged an entire season of his subconscious—
           complete with opening credits, plot twists, and a talking toaster sidekick.
