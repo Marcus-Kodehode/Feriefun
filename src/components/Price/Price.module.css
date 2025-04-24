@@ -15,12 +15,16 @@
   margin-bottom: 2rem;
   color: #f8ff6b;
   text-shadow: 0 0 8px rgba(255,107,107,0.8);
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
 }
 
 .subtext {
   font-size: 1.1rem;
   margin-bottom: 3rem;
   color: #ccc;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
 }
 
 /* 🔷 Kort-layout */
