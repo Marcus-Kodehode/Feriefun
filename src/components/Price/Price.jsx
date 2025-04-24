@@ -1,16 +1,25 @@
-// src/components/Price/Price.jsx
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import styles from './Price.module.css'
 
 export default function Price() {
   const navigate = useNavigate()
-  const goSignUp = () => navigate('/signup')
+  const location = useLocation()
+
+  // Naviger til samme path, med query-param og #signup
+  const goSignUp = (plan) => {
+    navigate({
+      pathname: location.pathname,
+      search: `?plan=${plan}`,  // Setter ?plan=free|premium|…
+      hash: 'signup'             // Setter #signup
+    })
+  }
 
   return (
     <section id="prices" className={styles.pricesSection}>
       <h2 className={styles.heading}>Choose Your Plan</h2>
       <div className={styles.cards}>
+
         {/* Free-plan */}
         <div className={styles.card}>
           <h3>Free</h3>
@@ -18,10 +27,11 @@ export default function Price() {
             $0<span>/week</span>
           </p>
           <ul>
-            <li>Unlimited pop‑up ads</li>
-            <li>Dream‑branded product placements</li>
+            <li>Unlimited pop-up ads</li>
+            <li>Dream-branded product placements</li>
           </ul>
-          <button className={styles.cta} onClick={goSignUp}>
+          {/* Sender med plan="free" */}
+          <button className={styles.cta} onClick={() => goSignUp('free')}>
             Sign Up for Free
           </button>
         </div>
@@ -33,11 +43,12 @@ export default function Price() {
             $49.99<span>/mo</span>
           </p>
           <ul>
-            <li>Ad‑free dreams (finally!)</li>
-            <li>AI‑transcripts of your nightly epics</li>
+            <li>Ad-free dreams (finally!)</li>
+            <li>AI-transcripts of your nightly epics</li>
             <li>Unlimited “dream skips”</li>
           </ul>
-          <button className={styles.cta} onClick={goSignUp}>
+          {/* Sender med plan="premium" */}
+          <button className={styles.cta} onClick={() => goSignUp('premium')}>
             Go Premium
           </button>
         </div>
@@ -50,32 +61,34 @@ export default function Price() {
           </p>
           <ul>
             <li>All Premium perks</li>
-            <li>Live co‑dreaming with friends</li>
-            <li>Complimentary in‑dream popcorn</li>
+            <li>Live co-dreaming with friends</li>
+            <li>Complimentary in-dream popcorn</li>
             <li>24/7 support from your subconsciousness</li>
           </ul>
-          <button className={styles.cta} onClick={goSignUp}>
+          {/* Sender med plan="plusultra" */}
+          <button className={styles.cta} onClick={() => goSignUp('plusultra')}>
             Join PlusUltra
           </button>
         </div>
 
-        {/* Galactic Plan */}
+        {/* GalactiX-plan */}
         <div className={styles.card}>
           <h3>GalactiX</h3>
           <p className={styles.price}>
             $999.99<span>/mo</span>
           </p>
           <ul>
-            <li>Teleportation test‑runs in your dreams</li>
+            <li>Teleportation test-runs in your dreams</li>
             <li>Access to the Dream SDK (beta!)</li>
             <li>Generate your own sentient dream AI</li>
           </ul>
-          <button className={styles.cta} onClick={goSignUp}>
+          {/* Sender med plan="galactix" */}
+          <button className={styles.cta} onClick={() => goSignUp('galactix')}>
             Unlock GalactiX
           </button>
         </div>
 
-        {/* EterniDream Plan */}
+        {/* EterniDream-plan */}
         <div className={styles.card}>
           <h3>EterniDream</h3>
           <p className={styles.price}>
@@ -86,10 +99,12 @@ export default function Price() {
             <li>Cosmic multiverse union</li>
             <li>Own your dream timeline forever</li>
           </ul>
-          <button className={styles.cta} onClick={goSignUp}>
+          {/* Sender med plan="eternidream" */}
+          <button className={styles.cta} onClick={() => goSignUp('eternidream')}>
             Ascend to EterniDream
           </button>
         </div>
+
       </div>
     </section>
   )

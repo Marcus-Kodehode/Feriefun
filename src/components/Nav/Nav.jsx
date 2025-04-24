@@ -1,8 +1,6 @@
-// src/components/Nav/Nav.jsx
 import React, { useState, useEffect, useRef } from 'react'
 import styles from './Nav.module.css'
-import { Link } from 'react-router-dom'
-import ScrollToTop from '../ScrollToTop/ScrollToTop' // 👈 Denne var savnet!
+import ScrollToTop from '../ScrollToTop/ScrollToTop'
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
@@ -11,7 +9,7 @@ export default function Nav() {
 
   const toggleMenu = () => setOpen(o => !o)
 
-  // Lås bakgrunnsrulling når menyen er åpen
+  // Lås bakgrunnsrulling når meny er åpen
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
@@ -25,7 +23,7 @@ export default function Nav() {
     }
   }, [open])
 
-  // Håndter Escape + Tab for å holde fokus i menyen
+  // Hold fokus innenfor meny ved Tab/Escape
   useEffect(() => {
     const onKey = e => {
       if (e.key === 'Escape' && open) {
@@ -33,8 +31,7 @@ export default function Nav() {
         toggleRef.current?.focus()
       }
       if (e.key === 'Tab' && open && menuRef.current) {
-        const items = Array.from(menuRef.current.querySelectorAll('a, button'))
-          .filter(el => !el.disabled)
+        const items = Array.from(menuRef.current.querySelectorAll('a, button')).filter(el => !el.disabled)
         const first = items[0]
         const last = items[items.length - 1]
         if (!e.shiftKey && document.activeElement === last) {
@@ -52,7 +49,7 @@ export default function Nav() {
   return (
     <>
       <header className={styles.navbar}>
-        {/* Logo som hjem-anker */}
+        {/* Logo som hjem-lenke */}
         <a
           href="#hero"
           className={styles.logo}
@@ -61,7 +58,7 @@ export default function Nav() {
           NapFlix
         </a>
 
-        {/* Hamburger-knapp */}
+        {/* Hamburger-ikon for mobil */}
         <button
           ref={toggleRef}
           className={`${styles.toggle} ${open ? styles.open : ''}`}
@@ -72,18 +69,50 @@ export default function Nav() {
           <span /><span /><span />
         </button>
 
-        {/* Navigasjonsmeny */}
+        {/* Selve menyen */}
         <nav
           ref={menuRef}
           className={`${styles.menu} ${open ? styles.open : ''}`}
         >
-          <ScrollToTop /> {/* 👈 Tilbake til toppen-knapp */}
+          <ScrollToTop />
 
           <ul>
-            <li><a href="#prices" className={styles.navButton}>Price</a></li>
-            <li><a href="#more-info" className={styles.navButton}>More Info</a></li>
-            <li><Link to="/signup" className={styles.navButton}>Sign‑Up</Link></li>
-            <li><Link to="/faq" className={styles.navButton}>FAQ</Link></li>
+            <li>
+              <a
+                href="#prices"             // Scroll til prisseksjon
+                className={styles.navButton}
+                onClick={() => setOpen(false)} 
+              >
+                Price
+              </a>
+            </li>
+            <li>
+              <a
+                href="#more-info"          // Scroll til mer-info-seksjon
+                className={styles.navButton}
+                onClick={() => setOpen(false)}
+              >
+                More Info
+              </a>
+            </li>
+            <li>
+              <a
+                href="#signup"             // Scroll til signup-seksjon
+                className={styles.navButton}
+                onClick={() => setOpen(false)}
+              >
+                Sign-Up
+              </a>
+            </li>
+            <li>
+              <a
+                href="#faq"                // FAQ er anchor, endre hvis det blir egen route
+                className={styles.navButton}
+                onClick={() => setOpen(false)}
+              >
+                FAQ
+              </a>
+            </li>
           </ul>
         </nav>
       </header>
