@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react'
 import Select from 'react-select'
 import { useLocation } from 'react-router-dom'
 import styles from './SignUp.module.css'
+import ColorPicker from '../ColorPicker/ColorPicker' 
 
 export default function SignUp() {
   const formRef = useRef()
@@ -66,6 +67,7 @@ export default function SignUp() {
 
   return (
     <section id="signup" className={styles.signupSection}>
+      <ColorPicker /> {/* 👈 Flyttet hit før form */}
       <h2 className={styles.heading}>Join NapFlix</h2>
       <p className={styles.subtext}>Sign up for a journey through your dreams.</p>
 

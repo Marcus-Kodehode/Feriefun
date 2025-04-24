@@ -6,7 +6,7 @@
 /* ✨ SEKSJON 1: Bakgrunn, tittel og tekst-justering          */
 /* ────────────────────────────────────────────────────────── */
 .signupSection {
-  padding: 4rem 2rem 10rem; /* Ekstra luft nederst */
+  padding: 6rem 2rem 10rem; /* Ekstra luft nederst */
   background: linear-gradient(135deg, #1a1d2e, #2e2e4f);
   color: #fff;
   text-align: center;       /* Sentrerer inline-form */

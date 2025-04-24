@@ -1,22 +1,22 @@
 // src/components/Nav/Nav.jsx
 import React, { useState, useEffect, useRef } from 'react'
 import styles from './Nav.module.css'
-import ScrollToTop from '../ScrollToTop/ScrollToTop'
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('hero')
   const toggleRef = useRef(null)
   const menuRef = useRef(null)
 
   const toggleMenu = () => setOpen(o => !o)
 
-  // Lås bakgrunnsrulling når menyen er åpen
+  // 🔒 Lås bakgrunnsrulling når menyen er åpen
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [open])
 
-  // Autofokus første lenke når meny åpnes
+  // 🧠 Autofokus første lenke når meny åpnes
   useEffect(() => {
     if (open && menuRef.current) {
       const focusable = menuRef.current.querySelectorAll('a, button')
@@ -24,7 +24,7 @@ export default function Nav() {
     }
   }, [open])
 
-  // Håndter Escape + Tab for å holde fokus i menyen
+  // ⌨️ Escape + Tab-nav mellom elementer
   useEffect(() => {
     const onKey = e => {
       if (e.key === 'Escape' && open) {
@@ -32,8 +32,7 @@ export default function Nav() {
         toggleRef.current?.focus()
       }
       if (e.key === 'Tab' && open && menuRef.current) {
-        const items = Array.from(menuRef.current.querySelectorAll('a, button'))
-          .filter(el => !el.disabled)
+        const items = Array.from(menuRef.current.querySelectorAll('a, button')).filter(el => !el.disabled)
         const first = items[0]
         const last = items[items.length - 1]
         if (!e.shiftKey && document.activeElement === last) {
@@ -47,6 +46,23 @@ export default function Nav() {
     document.addEventListener('keydown', onKey)
     return () => document.removeEventListener('keydown', onKey)
   }, [open])
+
+  // 📡 Scroll tracker: Hvilken seksjon vises nå?
+  useEffect(() => {
+    const sections = document.querySelectorAll('section[id]')
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id)
+          }
+        })
+      },
+      { threshold: 0.6 }
+    )
+    sections.forEach(section => observer.observe(section))
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <>
@@ -76,31 +92,50 @@ export default function Nav() {
           ref={menuRef}
           className={`${styles.menu} ${open ? styles.open : ''}`}
         >
-          <ScrollToTop /> {/* Tilbake til toppen-knapp */}
 
           <ul>
             <li>
-              <a href="#hero" className={styles.navButton} onClick={() => setOpen(false)}>
+              <a
+                href="#hero"
+                className={`${styles.navButton} ${activeSection === 'hero' ? styles.active : ''}`}
+                onClick={() => setOpen(false)}
+              >
                 Home
               </a>
             </li>
             <li>
-              <a href="#prices" className={styles.navButton} onClick={() => setOpen(false)}>
+              <a
+                href="#price"
+                className={`${styles.navButton} ${activeSection === 'price' ? styles.active : ''}`}
+                onClick={() => setOpen(false)}
+              >
                 Price
               </a>
             </li>
             <li>
-              <a href="#more-info" className={styles.navButton} onClick={() => setOpen(false)}>
+              <a
+                href="#more-info"
+                className={`${styles.navButton} ${activeSection === 'more-info' ? styles.active : ''}`}
+                onClick={() => setOpen(false)}
+              >
                 More Info
               </a>
             </li>
             <li>
-              <a href="#signup" className={styles.navButton} onClick={() => setOpen(false)}>
+              <a
+                href="#signup"
+                className={`${styles.navButton} ${activeSection === 'signup' ? styles.active : ''}`}
+                onClick={() => setOpen(false)}
+              >
                 Sign-Up
               </a>
             </li>
             <li>
-              <a href="#faq" className={styles.navButton} onClick={() => setOpen(false)}>
+              <a
+                href="#faq"
+                className={`${styles.navButton} ${activeSection === 'faq' ? styles.active : ''}`}
+                onClick={() => setOpen(false)}
+              >
                 FAQ
               </a>
             </li>

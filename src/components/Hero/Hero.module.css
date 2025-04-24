@@ -1,202 +1,192 @@
-/* src/components/Hero/Hero.module.css */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-/* 1. Hero-seksjonen */
 .hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* 6rem topp‑padding tilsvarer navbar‑høyden, og 2rem på sidene/bunnen */
-    padding: 6rem 2rem 2rem;
-    /* min‑height trekkes fra topp‑padding slik at total høyde er 100vh */
-    min-height: calc(100vh - 6rem);
-    background: linear-gradient(135deg, #292E49, #5433FF);
-  }
-  
-  /* 2. Kortet */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18rem 4rem 2rem; /* 🍔 gir plass under header */
+  min-height: 100vh; /* ikke trekk fra noe – du har allerede scroll-margin */
+  scroll-margin-top: 6rem; /* legg gjerne her også */
+  background: linear-gradient(135deg, #292E49, #5433FF);
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  animation: fadeInDown 1s ease-out both;
+}
+
+.content {
+  flex: 1 1 450px;
+  padding: 3rem;
+  color: #fff;
+}
+
+.imageWrapper {
+  flex: 1 1 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: fadeInUp 1s ease-out both;
+}
+
+.image {
+  max-width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #ff6b6b;
+  text-shadow: 0 0 8px rgba(255, 107, 107, 0.8);
+  animation: fadeInDown 1s both;
+}
+
+.subtitle {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #ff6b6b, #f8ff6b, #6b6bff);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shine 4s linear 1 both;
+  letter-spacing: 0.1em;
+}
+
+.description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-family: 'Orbitron', sans-serif;
+  text-align: left;
+  animation: fadeInDown 1s 0.3s ease-out both;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+  font-family: 'Orbitron', sans-serif;
+  animation: fadeInDown 1s 0.5s ease-out both;
+}
+
+.features li {
+  margin-bottom: 0.75rem;
+}
+
+.features li:hover {
+  color: #ff6b6b;
+  transition: color 0.2s ease;
+}
+
+.cta {
+  position: relative;
+  display: inline-block;
+  font-size: 1.125rem;
+  padding: 0.75rem 2rem 0.75rem 3rem;
+  background-color: #ff4757;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.75rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 1;
+  animation: fadeInDown 1s 0.7s ease-out both;
+}
+
+.cta:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.cta:disabled {
+  opacity: 0.8;
+  cursor: default;
+}
+
+.cta.spin::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  width: 1em;
+  height: 1em;
+  margin-top: -0.5em;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.joinedMessage {
+  font-size: 1.125rem;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: rgba(255, 71, 87, 0.1);
+  border: 1px solid #ff4757;
+  border-radius: 0.5rem;
+  color: #ff4757;
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes shine {
+  from { background-position: 200% center; }
+  to   { background-position: -200% center; }
+}
+
+@media (max-width: 768px) {
   .card {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 2rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-    overflow: hidden;
-    animation: fadeInDown 1s ease-out both;
+    flex-direction: column;
   }
-  
-  /* 3. Innholds‑kolonne */
-  .content {
-    flex: 1 1 450px;
-    padding: 3rem;
-    color: #fff;
-  }
-  
-  /* 4. Bilde‑kolonne */
+  .content,
   .imageWrapper {
-    flex: 1 1 450px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    animation: fadeInUp 1s ease-out both;
+    flex: 1 1 100%;
+    padding: 1.5rem 1rem;
+    text-align: center;
   }
-  .image {
-    max-width: 100%;
-    border-radius: 1rem;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* 5. Tekst‑typografi og animasjoner */
-  .title {
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 700;
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: #ff6b6b;
-    text-shadow: 0 0 8px rgba(255, 107, 107, 0.8);
-    animation: fadeInDown 1s both;
-  }
-  
-  .subtitle {
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 400;
-    font-size: 1.25rem;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(90deg, #ff6b6b, #f8ff6b, #6b6bff);
-    background-size: 200% auto;
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    animation: shine 4s linear 1 both;
-    letter-spacing: 0.1em;
-  }
-  .subtitleHidden {
-    animation: none !important;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-  }
-  
-  .description {
-    font-size: 1.125rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    font-family: 'Orbitron', sans-serif;
-    text-align:left ;
-    animation:
-      fadeInDown 1s 0.3s ease-out both,
-      textBreath 4s ease-in-out 1s infinite both;
-      
-  }
-  
-  .features {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 2rem;
-    opacity: 0;
-    font-family: 'Orbitron', sans-serif;
-    animation: fadeInDown 1s 0.5s ease-out both;
-  }
-  .features li {
-    margin-bottom: 0.75rem;
-  }
-  .features li:hover {
-    color: #ff6b6b;
-    transition: color 0.2s ease;
-  }
-  
-  /* 6. CTA‑knapp */
-  .cta {
-    position: relative;
-    display: inline-block;
-    font-size: 1.125rem;
-    /* padding: top right bottom left */
-    padding: 0.75rem 2rem 0.75rem 3rem;
-    background-color: #ff4757;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 0.75rem;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    z-index: 1;
-    opacity: 1;
-    animation: fadeInDown 1s 0.7s ease-out both;
-  }
-  
-  .cta:hover:not(:disabled) {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  }
-  
-  .cta:disabled {
-    opacity: 0.8;
-    cursor: default;
-  }
-  
-  /* ───────────────────────────────────────── */
-  /* Spinner inne i knappen                */
-  /* ───────────────────────────────────────── */
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
-  
-  /* Behold spinner‑ikonet, men ikke skjul knappen */
-  .cta.spin::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 1rem;            /* litt inn fra venstre kant */
-    width: 1em;
-    height: 1em;
-    margin-top: -0.5em;
-    border: 2px solid rgba(255, 255, 255, 0.6);
-    border-top-color: #fff;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-  }
-  
-  /* 7. Velkomstmelding */
-  .joinedMessage {
-    font-size: 1.125rem;
-    margin-top: 2rem;
-    padding: 1rem;
-    background: rgba(255, 71, 87, 0.1);
-    border: 1px solid #ff4757;
-    border-radius: 0.5rem;
-    color: #ff4757;
-    animation: fadeInUp 0.8s ease-out both;
-  }
-  
-  /* 8. Keyframes */
-  @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes shine {
-    from { background-position: 200% center; }
-    to   { background-position: -200% center; }
-  }
-  
-  /* 9. Responsivt */
-  @media (max-width: 768px) {
-    .card {
-      flex-direction: column;
-    }
-    .content,
-    .imageWrapper {
-      flex: 1 1 100%;
-      padding: 1.5rem 1rem; /* 💡 top/bottom: 1.5rem, left/right: 1rem */
-      text-align: center;
-    }
-  }
-  
+}
+
+/* ✅ Classnames brukt i Hero.jsx-komponenten
+.hero              - Wrapper for hele Hero-seksjonen (padding + bakgrunn)
+.card              - Selve kortet som inneholder tekst og bilde
+.content           - Venstrekolonnen med tekstinnhold
+.imageWrapper      - Høyrekolonnen med bilde
+.image             - NapFlix-brillebilde
+.title             - Stor tittel "NapFlix"
+.subtitle          - Farget animert undertittel
+.description       - Introtekst, planbeskrivelser og bieffekter
+.features          - Liste med ikoner og funksjoner
+.cta               - Call-to-action knapp (start trial)
+.cta.spin          - Spinner-stil når knappen loader
+.joinedMessage     - Humoristisk melding når bruker har "meldt seg inn"
+*/

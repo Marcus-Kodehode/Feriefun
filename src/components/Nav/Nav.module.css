@@ -18,6 +18,14 @@
   font-family: 'Orbitron', sans-serif;
 }
 
+.navButton.active {
+  background-color: #f8ff6b;
+  color: #1a1d2e;
+  box-shadow: 0 0 12px #f8ff6b;
+  font-weight: bold;
+}
+
+
 /* 2. Logo som hjem‑knapp med neon‑glow */
 .logo {
   font-size: 1.75rem;
