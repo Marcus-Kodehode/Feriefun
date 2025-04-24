@@ -1,32 +1,24 @@
 .scrollTop {
-    font-size: 1.75rem;
-    background: rgba(255, 107, 107, 0.1);
-    border: 1px solid #ff6b6b;
-    border-radius: 0.75rem;
-    color: #ff6b6b;
-    cursor: pointer;
-    padding: 0.35rem 0.75rem;
-    margin-bottom: 0.75rem;
-    transition:
-      background 0.2s ease,
-      transform 0.2s ease,
-      box-shadow 0.2s ease;
-  
-    /* 💡 Disse to linjene sentrerer den som de andre */
-    align-self: center;
-    display: block;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: 1rem;
+  margin-left: 4px; /* 🔧 finjuster denne for sentrering */
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scrollTop:hover {
+  transform: scale(1.2);
+}
+
+@media (min-width: 769px) {
+  .scrollTop {
+    display: none !important;
   }
-  
-  .scrollTop:hover {
-    background: #ff6b6b;
-    color: #111;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
-  }
-  
-  @media (min-width: 769px) {
-    .scrollTop {
-      display: none !important;
-    }
-  }
-  
+}
+

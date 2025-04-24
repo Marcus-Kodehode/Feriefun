@@ -1,11 +1,13 @@
 // src/components/Nav/Nav.jsx
 import React, { useState, useEffect, useRef } from 'react'
 import styles from './Nav.module.css'
+import { Link } from 'react-router-dom'
+import ScrollToTop from '../ScrollToTop/ScrollToTop' // 👈 Denne var savnet!
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
   const toggleRef = useRef(null)
-  const menuRef   = useRef(null)
+  const menuRef = useRef(null)
 
   const toggleMenu = () => setOpen(o => !o)
 
@@ -34,7 +36,7 @@ export default function Nav() {
         const items = Array.from(menuRef.current.querySelectorAll('a, button'))
           .filter(el => !el.disabled)
         const first = items[0]
-        const last  = items[items.length - 1]
+        const last = items[items.length - 1]
         if (!e.shiftKey && document.activeElement === last) {
           e.preventDefault(); first.focus()
         }
@@ -59,7 +61,7 @@ export default function Nav() {
           NapFlix
         </a>
 
-        {/* Hamburger‑knapp */}
+        {/* Hamburger-knapp */}
         <button
           ref={toggleRef}
           className={`${styles.toggle} ${open ? styles.open : ''}`}
@@ -75,48 +77,18 @@ export default function Nav() {
           ref={menuRef}
           className={`${styles.menu} ${open ? styles.open : ''}`}
         >
+          <ScrollToTop /> {/* 👈 Tilbake til toppen-knapp */}
+
           <ul>
-            <li>
-              <a
-                href="#prices"
-                className={styles.navButton}
-                onClick={() => setOpen(false)}
-              >
-                Price
-              </a>
-            </li>
-            <li>
-              <a
-                href="#more-info"
-                className={styles.navButton}
-                onClick={() => setOpen(false)}
-              >
-                More Info
-              </a>
-            </li>
-            <li>
-              <a
-                href="#signup"
-                className={styles.navButton}
-                onClick={() => setOpen(false)}
-              >
-                Sign‑Up
-              </a>
-            </li>
-            <li>
-              <a
-                href="#faq"
-                className={styles.navButton}
-                onClick={() => setOpen(false)}
-              >
-                FAQ
-              </a>
-            </li>
+            <li><a href="#prices" className={styles.navButton}>Price</a></li>
+            <li><a href="#more-info" className={styles.navButton}>More Info</a></li>
+            <li><Link to="/signup" className={styles.navButton}>Sign‑Up</Link></li>
+            <li><Link to="/faq" className={styles.navButton}>FAQ</Link></li>
           </ul>
         </nav>
       </header>
 
-      {/* Bakgrunnsoverlegg når menyen er åpen */}
+      {/* Overlay bak menyen */}
       {open && <div className={styles.overlay} onClick={toggleMenu} />}
     </>
   )

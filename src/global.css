@@ -7,14 +7,16 @@
   box-sizing: border-box;
 }
 
-/* src/global.css */
 html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  overflow-x: hidden;   /* <— her */
-  font-family: 'Montserrat', sans-serif;
-  scroll-behavior: smooth;
+  background: #1a1d2e; /* eller den samme gradienten som resten av siden */
+  overflow-x: hidden;
 }
 
-
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}

@@ -194,7 +194,7 @@
     .content,
     .imageWrapper {
       flex: 1 1 100%;
-      padding: 2rem;
+      padding: 1.5rem 1rem; /* 💡 top/bottom: 1.5rem, left/right: 1rem */
       text-align: center;
     }
   }

@@ -1,5 +1,7 @@
+// src/components/ScrollToTop/UpArrow.jsx
 import React from 'react'
 import styles from './ScrollToTop.module.css'
+import UpArrow from './UpArrow'
 
 export default function ScrollToTop() {
   const scrollToTop = () => {
@@ -15,7 +17,7 @@ export default function ScrollToTop() {
       className={styles.scrollTop}
       aria-label="Scroll to top"
     >
-      ⬆️
+      <UpArrow />
     </button>
   )
 }

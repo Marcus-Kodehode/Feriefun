@@ -1,0 +1,212 @@
+/* src/components/SignUp/SignUp.module.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+/* ────────────────────────────────────────────────────────── */
+/* ✨ SEKSJON 1: Bakgrunn, tittel og tekst-justering          */
+/* ────────────────────────────────────────────────────────── */
+.signupSection {
+  padding: 4rem 2rem 10rem; /* Ekstra luft nederst */
+  background: linear-gradient(135deg, #1a1d2e, #2e2e4f);
+  color: #fff;
+  text-align: center;       /* Sentrerer inline-form */
+}
+
+/* Tittel */
+.heading {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #ff6b6b;
+  font-family: 'Orbitron', sans-serif;;
+}
+
+/* Undertekst */
+.subtext {
+  margin-bottom: 2rem;
+  font-size: 1.125rem;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* ────────────────────────────────────────────────────────── */
+/* ✨ SEKSJON 2: Form-container som inline-flex              */
+/* ────────────────────────────────────────────────────────── */
+.form {
+  display: inline-flex;       /* Shrinker til bredden av feltene */
+  flex-direction: column;
+  gap: 1.25rem;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Hver form-gruppe (label + input/select) */
+.form div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;        /* Sentrerer label over feltet */
+  gap: 0.5rem;
+}
+
+/* Felles variabel for feltbredde */
+:root {
+  --field-width: 400px;       /* Juster denne til ønsket bredde */
+}
+
+/* Text-input og dropdown-wrapper */
+input,
+.select {
+  width: var(--field-width);
+  max-width: 90vw;            /* Sikrer mobilvennlig skjevstørrelse */
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #444;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Fokus-effekt på alle felt */
+input:focus,
+.select:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2);
+}
+
+/* Placeholder-farge for select */
+.select select:invalid {
+  color: #aaa;
+}
+
+/* ────────────────────────────────────────────────────────── */
+/* ✨ SEKSJON 3: React-Select container (wrapper)            */
+/* ────────────────────────────────────────────────────────── */
+.select {
+  position: relative;         /* referanse for absolutt-meny */
+  padding: 0.25rem;           /* små 4px luft rundt kontrollen */
+}
+
+/* ────────────────────────────────────────────────────────── */
+/* ✨ SEKSJON 4: Globale overstyringer for dropdown-meny     */
+/* ────────────────────────────────────────────────────────── */
+/* 4.1 Kontroll-styling */
+.select :global(.react-select__control) {
+  width: 100% !important;
+  min-height: 3rem;
+  box-shadow: none;
+  border-radius: 0.5rem;
+  border-color: #444;
+}
+
+/* 4.2 Menyen: strekk helt ut fra venstre til høyre kant */
+.select :global(.react-select__menu) {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  margin: 0 !important;
+  width: auto !important;
+  background-color: #2e2e4f !important;
+  border-radius: 0.5rem !important;
+  z-index: 9999 !important;
+}
+
+/* 4.3 Selve listen med scrollelement */
+.select :global(.react-select__menu-list) {
+  max-height: 200px;
+  padding: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #555 #2e2e4f;
+}
+
+/* 4.4 Scrollbar-styling */
+.select :global(.react-select__menu-list::-webkit-scrollbar) {
+  width: 8px;
+}
+.select :global(.react-select__menu-list::-webkit-scrollbar-track) {
+  background: #2e2e4f;
+}
+.select :global(.react-select__menu-list::-webkit-scrollbar-thumb) {
+  background-color: #888;
+  border-radius: 4px;
+  border: 2px solid #2e2e4f;
+}
+
+/* 4.5 Hver option – lik padding og sentrert tekst */
+.select :global(.react-select__option) {
+  padding: 0.75rem 1rem !important;
+  text-align: center !important;
+  white-space: normal !important;
+  cursor: pointer;
+  background-color: #2e2e4f;
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;;
+}
+
+/* 4.6 Option-states */
+.select :global(.react-select__option--is-focused) {
+  background-color: #444 !important;
+}
+.select :global(.react-select__option--is-selected) {
+  background-color: #ff6b6b !important;
+  color: #111 !important;
+}
+
+/* 4.7 Valgt verdi & placeholder */
+.select :global(.react-select__single-value) {
+  color: #fff !important;
+}
+.select :global(.react-select__placeholder) {
+  color: #aaa !important;
+}
+
+/* ────────────────────────────────────────────────────────── */
+/* ✨ SEKSJON 5: Submit-knapp                               */
+/* ────────────────────────────────────────────────────────── */
+.submitButton {
+  width: var(--field-width);
+  max-width: 90vw;
+  padding: 0.75rem 2rem;
+  background: #ff6b6b;
+  border: none;
+  border-radius: 0.5rem;
+  color: #111;
+  font-weight: bold;
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin: 1rem auto 0;        /* litt luft over + sentrert */
+  display: block;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.submitButton:hover {
+  background: #ff4b4b;
+}
+
+
+
+  /* ✅ Classnames brukt i SignUp.jsx-komponenten
+
+.signupSection         - Wrapper for hele sign-up seksjonen med bakgrunn og padding
+.heading               - Tittel for sign-up ("Join NapFlix")
+.subtext               - Undertekst rett under tittelen
+.form                  - Wrapper for hele skjemaet (form layout)
+.form div              - Hver enkelt form-gruppe (label + input/select)
+label                  - Label for input-felt og select-felt
+input                  - Tekstinput-felt (for navn og e-post)
+select                 - Native select (fallback hvis React Select ikke brukes)
+.submitButton          - Innsendingsknappen ("Sign Me Up")
+
+.react-select__control         - React Select container (styling av input-delen)
+.react-select__menu            - Dropdownmenyen som åpner seg
+.react-select__menu-list       - Wrapper for listen av alternativer i menyen
+.react-select__option          - Hver enkelt plan i menyen
+.react-select__option--is-focused   - Hover/fokus-styling av menyvalg
+.react-select__option--is-selected  - Valgt menyvalg
+.react-select__single-value    - Den valgte verdien som vises etter valg
+.react-select__placeholder     - Placeholder-tekst i React Select
+.select                        - Custom className som settes på React Select for bredde og styling
+
+*/

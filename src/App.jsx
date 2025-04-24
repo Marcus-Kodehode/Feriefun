@@ -4,7 +4,7 @@ import Nav from './components/Nav/Nav'
 import Hero from './components/Hero/Hero'
 import Price from './components/Price/Price'
 import MoreInfo from './components/MoreInfo/MoreInfo'
-// import SignUp from './components/SignUp/SignUp'
+import SignUp from './components/SignUp/SignUp'
 // import UselessFacts from './components/UselessFacts/Facts'
 // import ColorPicker from './components/ColorPicker/ColorPicker'
 // import FAQ from './components/FAQ/FAQ'
@@ -22,6 +22,7 @@ export default function App() {
       {
       <Price />}
       {<MoreInfo />}
+      {<SignUp />}
 
       {/* FAQ: komponent klar når du er klar med FAQ/ */}
       {/*
