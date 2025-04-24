@@ -5,9 +5,10 @@ import Hero from './components/Hero/Hero'
 import Price from './components/Price/Price'
 import MoreInfo from './components/MoreInfo/MoreInfo'
 import SignUp from './components/SignUp/SignUp'
-// import UselessFacts from './components/UselessFacts/Facts'
+import Faq from './components/FAQ/Faq'
+
+// Fremtidig komponent for fargevalg – lett å slå på når du er klar:
 // import ColorPicker from './components/ColorPicker/ColorPicker'
-// import FAQ from './components/FAQ/FAQ'
 // import Recordings from './components/Recordings/Recordings'
 
 export default function App() {
@@ -15,34 +16,26 @@ export default function App() {
     <>
       <Nav />
 
-      {/* HERO-seksjonen er klar */}
+      {/* HERO-seksjonen */}
       <Hero />
 
-      {/* PRICING: komponent klar når du er klar med Pricing/ */}
-      {
-      <Price />}
-      {<MoreInfo />}
-      {<SignUp />}
+      {/* Pris-oversikt */}
+      <Price />
 
-      {/* FAQ: komponent klar når du er klar med FAQ/ */}
-      {/*
-      <FAQ />
-      */}
+      {/* «Mer info»-seksjon */}
+      <MoreInfo />
 
-      {/* DREAM FACTS: komponent klar når du er klar med Facts/ */}
-      {/*
-      <UselessFacts />
-      */}
+      {/* Sign-up-seksjon */}
+      <SignUp />
 
-      {/* DREAM THEME (Color Picker): komponent klar når du er klar med ColorPicker/ */}
-      {/*
-      <ColorPicker />
-      */}
+      {/* FAQ / Useless Facts */}
+      <Faq />
 
-      {/* RECORDINGS: komponent klar når du er klar med Recordings/ */}
-      {/*
-      <Recordings />
-      */}
+      {/* Aktiver når ColorPicker er klar */}
+      {/* <ColorPicker /> */}
+      
+      {/* Aktiver når Recordings er klar */}
+      {/* <Recordings /> */}
     </>
   )
 }

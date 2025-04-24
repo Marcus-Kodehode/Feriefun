@@ -86,6 +86,7 @@
     margin-bottom: 1.5rem;
     opacity: 0;
     font-family: 'Orbitron', sans-serif;
+    text-align:left ;
     animation:
       fadeInDown 1s 0.3s ease-out both,
       textBreath 4s ease-in-out 1s infinite both;
