@@ -74,3 +74,15 @@
   }
   
   
+  /* ✅ Classnames brukt i Faq.jsx-komponenten
+
+.wrapper       - Wrapper for FAQ-seksjonen med maks bredde og padding
+.title         - Seksjonstittel (h2) med farge og font-størrelse
+.box           - Faktaboks med bakgrunn, padding og kursiv stil
+.button        - Knappe-stil for å vise ny fakta eller navigere
+.faqList       - Listecontainer for alle FAQ-elementene, kolonnevisning
+.faqItem       - Hvert FAQ-element med bakgrunn, padding og skygge
+.faqQuestion   - Spørsmålstekst med fet skrift og gul farge
+.faqAnswer     - Svartekst med linjeavstand og lys farge
+
+*/

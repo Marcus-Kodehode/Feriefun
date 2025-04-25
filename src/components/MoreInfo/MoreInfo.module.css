@@ -85,3 +85,15 @@
     /* skjul den på desktop */
     .scrollToTop { display: none; }
   }
+
+  /* ✅ Classnames brukt i MoreInfo.jsx-komponenten
+
+.moreInfoSection   - Wrapper for seksjonen med padding og bakgrunn
+.heading           - Hovedoverskrift med neon-glow og fadeInDown-animasjon
+.content           - Brødtekst-container med fadeInUp-animasjon og linjehøyde
+.content p         - Paragraf i content med margin under
+.tagline           - Kursiv tagline med gul farge og sentrert styling
+.subheading        - Underoverskrift med blå glow og fadeInDown-animasjon
+.scrollToTop       - Scroll-to-top-knapp som vises på mobil under meny
+
+*/

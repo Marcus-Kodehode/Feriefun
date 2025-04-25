@@ -177,3 +177,17 @@
       0 0 24px #ff4757;
   }
 }
+
+
+/* ✅ Classnames brukt i Nav.jsx-komponenten
+
+.navbar      - Header med gradient, glass-effekt og slide-down animasjon
+.navButton   - Navigasjonsknapp i menyen
+.active      - Klasse for å markere hvilken seksjon som er aktiv
+.logo        - Logo som hjem-knapp med neon-glow
+.menu        - Container for navigasjonslenker
+.toggle      - Hamburger-toggle-knapp for mobil
+.open        - Tilstands-klasse som åpner meny eller animasjon på toggle
+.overlay     - Semi-transparent bakgrunn når menyen er åpen
+
+*/

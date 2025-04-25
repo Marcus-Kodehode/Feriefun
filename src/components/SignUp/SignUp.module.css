@@ -1,209 +1,231 @@
 /* src/components/SignUp/SignUp.module.css */
 
+/* Importerer Orbitron-font fra Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+
 
 /* ────────────────────────────────────────────────────────── */
 /* ✨ SEKSJON 1: Bakgrunn, tittel og tekst-justering          */
 /* ────────────────────────────────────────────────────────── */
+
+/* Hovedseksjon for signup-skjema */
 .signupSection {
-  padding: 6rem 2rem 10rem; /* Ekstra luft nederst */
-  background: linear-gradient(135deg, #1a1d2e, #2e2e4f);
-  color: #fff;
-  text-align: center;       /* Sentrerer inline-form */
+  padding: 6rem 2rem 10rem;          /* Innvendig rom: topp, sider, ekstra bunn */
+  background: linear-gradient(135deg, #1a1d2e, #2e2e4f); /* Gradient bakgrunn */
+  color: #fff;                       /* Hvit tekstfarge */
+  text-align: center;                /* Sentrer tekst og inline-elementer */
 }
 
-/* Tittel */
+/* Tittel over skjemaet */
 .heading {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  color: #ff6b6b;
-  font-family: 'Orbitron', sans-serif;;
+  font-size: 2rem;                   /* Størrelse på font */
+  margin-bottom: 0.5rem;             /* Avstand under titler */
+  color: #ff6b6b;                    /* Rødrosa farge */
+  font-family: 'Orbitron', sans-serif; /* Orbitron-font */
 }
 
-/* Undertekst */
+/* Undertekst under tittelen */
 .subtext {
-  margin-bottom: 2rem;
-  font-size: 1.125rem;
-  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 2rem;               /* Avstand under undertekst */
+  font-size: 1.125rem;               /* Litt større brødtekst */
+  font-family: 'Orbitron', sans-serif; /* Orbitron-font */
 }
+
+
 
 /* ────────────────────────────────────────────────────────── */
 /* ✨ SEKSJON 2: Form-container som inline-flex              */
 /* ────────────────────────────────────────────────────────── */
+
+/* Wrapper for input-feltene */
 .form {
-  display: inline-flex;       /* Shrinker til bredden av feltene */
-  flex-direction: column;
-  gap: 1.25rem;
-  font-family: 'Orbitron', sans-serif;
+  display: inline-flex;              /* Flex som krymper til innhold */
+  flex-direction: column;            /* Stabler feltene vertikalt */
+  gap: 1.25rem;                      /* Avstand mellom feltene */
+  font-family: 'Orbitron', sans-serif; /* Orbitron-font */
 }
 
-/* Hver form-gruppe (label + input/select) */
+/* Hver gruppe med label og input/select */
 .form div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;        /* Sentrerer label over feltet */
-  gap: 0.5rem;
+  display: flex;                     /* Flex for label og felt */
+  flex-direction: column;            /* Label over felt */
+  align-items: center;               /* Sentrer label over felt */
+  gap: 0.5rem;                       /* Avstand mellom label og felt */
 }
 
-/* Felles variabel for feltbredde */
+/* Global variabel for bredde på felt */
 :root {
-  --field-width: 400px;       /* Juster denne til ønsket bredde */
+  --field-width: 400px;              /* Bredde på input og select */
 }
 
-/* Text-input og dropdown-wrapper */
+/* Felles stil for tekstfelt og dropdown-wrapper */
 input,
 .select {
-  width: var(--field-width);
-  max-width: 90vw;            /* Sikrer mobilvennlig skjevstørrelse */
-  padding: 0.75rem;
-  font-size: 1rem;
-  border-radius: 0.5rem;
-  border: 1px solid #444;
-  background: rgba(255, 255, 255, 0.05);
-  color: #fff;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  font-family: 'Orbitron', sans-serif;
+  width: var(--field-width);         /* Bruker variabel for bredde */
+  max-width: 90vw;                   /* Sikrer responsivitet på mobil */
+  padding: 0.75rem;                  /* Innvendig padding */
+  font-size: 1rem;                   /* Standard fontstørrelse */
+  border-radius: 0.5rem;             /* Runde hjørner */
+  border: 1px solid #444;            /* Mørk kant */
+  background: rgba(255, 255, 255, 0.05); /* Gjennomsiktig bakgrunn */
+  color: #fff;                       /* Hvit tekst */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease; /* Animasjon ved fokus */
+  font-family: 'Orbitron', sans-serif; /* Orbitron-font */
 }
 
-/* Fokus-effekt på alle felt */
+/* Fokus-effekt på input og select */
 input:focus,
 .select:focus {
-  outline: none;
-  border-color: #ff6b6b;
-  box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2);
+  outline: none;                     /* Fjerner standard outline */
+  border-color: #ff6b6b;             /* Rødrosa kant ved fokus */
+  box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2); /* Svakt glow */
 }
 
-/* Placeholder-farge for select */
+/* Placeholder-farge for select når ingen verdi valgt */
 .select select:invalid {
-  color: #aaa;
+  color: #aaa;                       /* Lys grå placeholder-farge */
 }
+
+
 
 /* ────────────────────────────────────────────────────────── */
 /* ✨ SEKSJON 3: React-Select container (wrapper)            */
 /* ────────────────────────────────────────────────────────── */
+
+/* Wrapper rundt react-select-komponenten */
 .select {
-  position: relative;         /* referanse for absolutt-meny */
-  padding: 0.25rem;           /* små 4px luft rundt kontrollen */
+  position: relative;                /* For absolutt-posisjonering av meny */
+  padding: 0.25rem;                  /* Litt luft rundt kontrollen */
 }
+
+
 
 /* ────────────────────────────────────────────────────────── */
 /* ✨ SEKSJON 4: Globale overstyringer for dropdown-meny     */
 /* ────────────────────────────────────────────────────────── */
-/* 4.1 Kontroll-styling */
+
+/* 4.1 Style for kontrollen */
 .select :global(.react-select__control) {
-  width: 100% !important;
-  min-height: 3rem;
-  box-shadow: none;
-  border-radius: 0.5rem;
-  border-color: #444;
+  width: 100% !important;            /* Fyller hele wrapper-bredden */
+  min-height: 3rem;                  /* Minimum høyde */
+  box-shadow: none;                  /* Ingen skygge */
+  border-radius: 0.5rem;             /* Runde hjørner */
+  border-color: #444;                /* Mørk kant */
 }
 
-/* 4.2 Menyen: strekk helt ut fra venstre til høyre kant */
+/* 4.2 Menyen som vises under kontrollen */
 .select :global(.react-select__menu) {
-  position: absolute !important;
-  top: 100% !important;
-  left: 0 !important;
-  right: 0 !important;
-  margin: 0 !important;
-  width: auto !important;
-  background-color: #2e2e4f !important;
-  border-radius: 0.5rem !important;
-  z-index: 9999 !important;
+  position: absolute !important;     /* Absolutt plassert */
+  top: 100% !important;              /* Rett under kontrollen */
+  left: 0 !important;                /* Venstre kant */
+  right: 0 !important;               /* Høyre kant */
+  margin: 0 !important;              /* Ingen margin */
+  width: auto !important;            /* Automatisk bredde */
+  background-color: #2e2e4f !important; /* Mørk blå bakgrunn */
+  border-radius: 0.5rem !important;  /* Runde hjørner */
+  z-index: 9999 !important;          /* Over alt annet */
 }
 
-/* 4.3 Selve listen med scrollelement */
+/* 4.3 Rullbar liste i menyen */
 .select :global(.react-select__menu-list) {
-  max-height: 200px;
-  padding: 0;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #555 #2e2e4f;
+  max-height: 200px;                 /* Maks høyde før scroll */
+  padding: 0;                        /* Fjerner padding */
+  overflow-y: auto;                  /* Vertikal scroll */
+  scrollbar-width: thin;             /* Tynn scrollbar (Firefox) */
+  scrollbar-color: #555 #2e2e4f;     /* Farge på scroll og track */
 }
 
-/* 4.4 Scrollbar-styling */
+/* 4.4 Styling av scrollbar for WebKit-baserte nettlesere */
 .select :global(.react-select__menu-list::-webkit-scrollbar) {
-  width: 8px;
+  width: 8px;                        /* Bredde på scrollbar */
 }
 .select :global(.react-select__menu-list::-webkit-scrollbar-track) {
-  background: #2e2e4f;
+  background: #2e2e4f;               /* Track-bakgrunn */
 }
 .select :global(.react-select__menu-list::-webkit-scrollbar-thumb) {
-  background-color: #888;
-  border-radius: 4px;
-  border: 2px solid #2e2e4f;
+  background-color: #888;            /* Selve thumb-farge */
+  border-radius: 4px;                /* Runde kanter */
+  border: 2px solid #2e2e4f;         /* Kant rundt thumb */
 }
 
-/* 4.5 Hver option – lik padding og sentrert tekst */
+/* 4.5 Hver dropdown-option */
 .select :global(.react-select__option) {
-  padding: 0.75rem 1rem !important;
-  text-align: center !important;
-  white-space: normal !important;
-  cursor: pointer;
-  background-color: #2e2e4f;
-  color: #fff;
-  font-family: 'Orbitron', sans-serif;;
+  padding: 0.75rem 1rem !important;  /* Luft rundt tekst */
+  text-align: center !important;     /* Sentrert tekst */
+  white-space: normal !important;    /* Tekst kan brytes */
+  cursor: pointer;                   /* Gjør det klikkbart */
+  background-color: #2e2e4f;         /* Bakgrunnsfarge */
+  color: #fff;                       /* Hvit tekst */
+  font-family: 'Orbitron', sans-serif; /* Orbitron-font */
 }
 
-/* 4.6 Option-states */
+/* 4.6 Fokus og valgt tilstand for option */
 .select :global(.react-select__option--is-focused) {
-  background-color: #444 !important;
+  background-color: #444 !important; /* Mørkere bakgrunn ved hover */
 }
 .select :global(.react-select__option--is-selected) {
-  background-color: #ff6b6b !important;
-  color: #111 !important;
+  background-color: #ff6b6b !important; /* Rødrosa bakgrunn ved valgt */
+  color: #111 !important;             /* Mørk tekst ved valgt */
 }
 
-/* 4.7 Valgt verdi & placeholder */
+/* 4.7 Valgt verdi og placeholder i kontrollen */
 .select :global(.react-select__single-value) {
-  color: #fff !important;
+  color: #fff !important;            /* Hvit tekst for valgt verdi */
 }
 .select :global(.react-select__placeholder) {
-  color: #aaa !important;
+  color: #aaa !important;            /* Lys grå placeholder-tekst */
 }
+
+
 
 /* ────────────────────────────────────────────────────────── */
 /* ✨ SEKSJON 5: Submit-knapp                               */
 /* ────────────────────────────────────────────────────────── */
+
+/* Stil for send-knappen */
 .submitButton {
-  width: var(--field-width);
-  max-width: 90vw;
-  padding: 0.75rem 2rem;
-  background: #ff6b6b;
-  border: none;
-  border-radius: 0.5rem;
-  color: #111;
-  font-weight: bold;
-  font-size: 1.125rem;
-  cursor: pointer;
-  transition: background 0.2s ease;
-  margin: 1rem auto 0;        /* litt luft over + sentrert */
-  display: block;
-  font-family: 'Orbitron', sans-serif;
+  width: var(--field-width);         /* Samme bredde som inputs */
+  max-width: 90vw;                   /* Responsivt på mobil */
+  padding: 0.75rem 2rem;             /* Vertikal og horisontal padding */
+  background: #ff6b6b;               /* Rødrosa bakgrunn */
+  border: none;                      /* Ingen kant */
+  border-radius: 0.5rem;             /* Runde hjørner */
+  color: #111;                       /* Mørk tekst */
+  font-weight: bold;                 /* Fet tekst */
+  font-size: 1.125rem;               /* Litt større font */
+  cursor: pointer;                   /* Hånd-ikon ved hover */
+  transition: background 0.2s ease;  /* Jevn overgang ved hover */
+  margin: 1rem auto 0;              /* Luft over + sentrert horisontalt */
+  display: block;                    /* Blokkelement for margin auto */
+  font-family: 'Orbitron', sans-serif; /* Orbitron-font */
 }
 
+/* Hover-effekt for knapp */
 .submitButton:hover {
-  background: #ff4b4b;
+  background: #ff4b4b;               /* Litt mørkere rødrosa ved hover */
 }
 
 /* Ny toast-melding over skjemaet */
 .toast {
-  max-width: 500px;
-  margin: 0 auto 1.5rem;
-  padding: 0.75rem 1rem;
-  background: #4caf50;       /* grønn bakgrunn */
-  color: white;
-  border-radius: 0.5rem;
-  font-weight: 500;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  animation: fadeIn 0.3s ease-out;
+  max-width: 500px;                  /* Maks bredde */
+  margin: 0 auto 1.5rem;            /* Sentrert + avstand under */
+  padding: 0.75rem 1rem;             /* Innvendig luft */
+  background: #4caf50;               /* Grønn bakgrunn for suksess */
+  color: white;                      /* Hvit tekst */
+  border-radius: 0.5rem;             /* Runde hjørner */
+  font-weight: 500;                  /* Medium vekt */
+  text-align: center;                /* Sentrer tekst */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* Lett skygge */
+  animation: fadeIn 0.3s ease-out;   /* Fade-in-animasjon */
 }
 
-/* Enkel fade-in for bedre effekt */
+/* Enkel fade-in-animasjon */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(-10px); } /* Starter gjennomsiktig og litt oppe */
+  to   { opacity: 1; transform: translateY(0); }     /* Ender synlig i normal posisjon */
 }
+
 
 
 

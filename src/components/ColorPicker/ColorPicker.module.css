@@ -1,4 +1,4 @@
-.pickerBox {
+.pickerBox { /* Wrapper for fargevelger med gradient, padding, skygge og shimmer-animasjon */
   background: linear-gradient(135deg, #1a1d2e, #2b2e4f);
   padding: 2rem;
   border-radius: 1rem;
@@ -8,13 +8,13 @@
   background-size: 200% 200%;
 }
 
-@keyframes shimmer {
+@keyframes shimmer { /* Animasjon som flytter gradienten for shimmer-effekt */
   0%   { background-position: 0% 50%; }
   50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-.heading {
+.heading { /* Overskrift for color picker-seksjonen med farge, spacing og glow */
   font-size: 1.5rem;
   font-family: 'Orbitron', sans-serif;
   color: #f8ff6b;
@@ -25,25 +25,25 @@
   text-shadow: 0 0 6px rgba(255,255,255,0.3);
 }
 
-.pickers {
-  align-items: flex-start;
+.pickers { /* Flex-container for alle color pickers med wrapping og gap */
   display: flex;
-  gap: 2rem;
+  align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 2rem;
   margin-bottom: 1.5rem;
 }
 
-.colorGroup {
+.colorGroup { /* Hver gruppe med color input og label, sentrert vertikalt */
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Orbitron', sans-serif;
   color: white;
+  font-family: 'Orbitron', sans-serif;
   gap: 0.5rem;
 }
 
-input[type="color"] {
+input[type="color"] { /* Stil for fargevelger-input, stor firkant og ingen kant */
   width: 48px;
   height: 48px;
   border: none;
@@ -52,7 +52,7 @@ input[type="color"] {
   background: none;
 }
 
-input[type="text"] {
+input[type="text"] { /* Stil for tekstfelt som viser hex-verdi */
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   background: rgba(255,255,255,0.1);
@@ -64,16 +64,15 @@ input[type="text"] {
   font-family: 'Orbitron', sans-serif;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus { /* Fokus-effekt på tekstfelt med glow rundt kant */
   border: 1px solid #ff6b6b;
   outline: none;
   box-shadow: 0 0 10px #ff6b6b, 0 0 20px #ff6b6b;
 }
 
-.previewArea {
+.previewArea { /* Område som viser valgt farge med bakgrunn, padding og skygge */
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 0 auto;
   padding: 2rem;
   border-radius: 1rem;
   text-align: center;
@@ -85,3 +84,16 @@ input[type="text"]:focus {
   backdrop-filter: blur(8px);
   transition: all 0.3s ease-in-out;
 }
+
+/* ✅ Classnames brukt i ColorPicker.jsx-komponenten
+
+.pickerBox     - Wrapper med gradient bakgrunn, padding og shimmer-animasjon
+.heading       - Seksjonsoverskrift med glow og uppercase stil
+.pickers       - Flex-container for alle color pickers
+.colorGroup    - Hver enkelt color picker-gruppe med label og input
+input[type="color"] - Stil for fargevelger-input
+input[type="text"]  - Stil for tekstfelt som viser hex-kode
+input[type="text"]:focus - Fokusstil for tekstfelt med glow
+.previewArea   - Forhåndsvisningsområde for valgt farge
+
+*/

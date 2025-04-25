@@ -1,134 +1,130 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap'); /* Importerer Orbitron skrifttype fra Google Fonts */
 
-/* 🔷 Seksjonswrapper med bakgrunn og spacing */
-.pricesSection {
-  padding: 8rem 2rem 4rem;
-  background: #1a1c2b;
-  color: #fff;
-  text-align: center;
-  font-family: 'Orbitron', sans-serif;
-}
-
-/* 🔷 Tittel og undertekst */
-.heading {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  color: #f8ff6b;
-  text-shadow: 0 0 8px rgba(255,107,107,0.8);
-  text-align: center;
-  font-family: 'Orbitron', sans-serif;
+.pricesSection { /* Seksjonswrapper med bakgrunn og spacing */
+  padding: 8rem 2rem 4rem; /* Indre marg for topp sider bunn */
+  background: #1a1c2b; /* Mørk bakgrunnsfarge */
+  color: #fff; /* Hvit tekstfarge */
+  text-align: center; /* Sentrer tekst */
+  font-family: 'Orbitron', sans-serif; /* Bruk Orbitron font */
 }
 
-.subtext {
-  font-size: 1.1rem;
-  margin-bottom: 3rem;
-  color: #ccc;
-  text-align: center;
-  font-family: 'Orbitron', sans-serif;
+.heading { /* Stil for tittel */
+  font-size: 2.5rem; /* Stor fontstørrelse */
+  margin-bottom: 2rem; /* Avstand under tittel */
+  color: #f8ff6b; /* Lys gul tekstfarge */
+  text-shadow: 0 0 8px rgba(255,107,107,0.8); /* Myk glød rundt tekst */
+  text-align: center; /* Sentrer tittel */
+  font-family: 'Orbitron', sans-serif; /* Bruk Orbitron font */
 }
 
-/* 🔷 Kort-layout */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-  max-width: 1100px;
-  margin: 0 auto;
+.subtext { /* Stil for undertekst */
+  font-size: 1.1rem; /* Litt større tekst */
+  margin-bottom: 3rem; /* Avstand under undertekst */
+  color: #ccc; /* Lys grå farge */
+  text-align: center; /* Sentrer undertekst */
+  font-family: 'Orbitron', sans-serif; /* Bruk Orbitron font */
 }
 
-/* 🔷 Hvert abonnementskort */
-.card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.cards { /* Kort-layout i grid */
+  display: grid; /* Aktiverer grid-layout */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Responsiv kolonnefordeling */
+  gap: 2rem; /* Avstand mellom kort */
+  max-width: 1100px; /* Maksimal bredde */
+  margin: 0 auto; /* Sentrer horisontalt */
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 25px rgba(255, 255, 255, 0.05);
+.card { /* Stil for hvert abonnementskort */
+  background: rgba(255,255,255,0.03); /* Gjennomsiktig hvit bakgrunn */
+  border: 1px solid rgba(255,255,255,0.05); /* Svak kant rundt kort */
+  border-radius: 1rem; /* Runde hjørner */
+  padding: 2rem; /* Indre marg */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4); /* Myk skygge */
+  display: flex; /* Flexbox for innhold */
+  flex-direction: column; /* Stabler innhold vertikalt */
+  align-items: center; /* Sentrer innhold */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animasjon ved hover */
 }
 
-.card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #ff6b6b;
+.card:hover { /* Hover-effekt for kort */
+  transform: translateY(-4px); /* Løfter kort litt opp */
+  box-shadow: 0 12px 25px rgba(255,255,255,0.05); /* Lysere skygge */
 }
 
-/* 🔷 Pris-visning */
-.priceTag {
-  font-size: 2rem;
-  margin: 0.5rem 0 1.5rem;
-  color: #80f0ff;
-}
-.priceTag span {
-  font-size: 1rem;
-  color: #ccc;
+.card h3 { /* Overskrift i kort */
+  font-size: 1.5rem; /* Middels stor tekst */
+  margin-bottom: 0.5rem; /* Avstand under overskrift */
+  color: #ff6b6b; /* Rødrosa tekstfarge */
 }
 
-/* 🔷 Liste med features */
-.card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 2rem;
-  text-align: left;
-  color: #eee;
-}
-.card li {
-  margin-bottom: 0.75rem;
+.priceTag { /* Pris-visning */
+  font-size: 2rem; /* Stor fontstørrelse */
+  margin: 0.5rem 0 1.5rem; /* Margin topp sider bunn */
+  color: #80f0ff; /* Cyan-aktig farge */
 }
 
-/* 🔷 Call-to-action knapp */
-.cta {
-  margin-top: auto;
-  padding: 0.75rem 1.5rem;
-  background: #ff4757;
-  color: #fff;
-  border: none;
-  border-radius: 0.5rem;
-  font-family: 'Orbitron', sans-serif;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.cta:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+.priceTag span { /* Undertekst i priskilt */
+  font-size: 1rem; /* Normal fontstørrelse */
+  color: #ccc; /* Lys grå farge */
 }
 
-/* 🔷 Responsivt: Mobiljusteringer */
-@media (max-width: 768px) {
-  .pricesSection {
-    padding-top: 7rem; /* plass under sticky navbar */
-    padding-bottom: 3rem;
+.card ul { /* Liste med features */
+  list-style: none; /* Fjerner standard punkter */
+  padding: 0; /* Fjerner padding */
+  margin: 0 0 2rem; /* Margin under liste */
+  text-align: left; /* Venstrejustert tekst */
+  color: #eee; /* Lys grå tekstfarge */
+}
+
+.card li { /* Hvert listeelement */
+  margin-bottom: 0.75rem; /* Avstand mellom elementene */
+}
+
+.cta { /* Call-to-action knapp */
+  margin-top: auto; /* Skyver knapp til bunnen av kortet */
+  padding: 0.75rem 1.5rem; /* Innvendig luft vertikalt og horisontalt */
+  background: #ff4757; /* Rød bakgrunnsfarge */
+  color: #fff; /* Hvit tekst */
+  border: none; /* Ingen kant */
+  border-radius: 0.5rem; /* Runde hjørner */
+  font-family: 'Orbitron', sans-serif; /* Bruk Orbitron font */
+  cursor: pointer; /* Vis peker ved hover */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animasjon ved hover */
+}
+
+.cta:hover { /* Hover-effekt for knapp */
+  transform: translateY(-3px); /* Løfter knapp litt opp */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4); /* Myk skygge */
+}
+
+@media (max-width: 768px) { /* Mobiljusteringer */
+  .pricesSection { /* Justerer padding på mobil */
+    padding-top: 7rem; /* Plass under sticky navbar */
+    padding-bottom: 3rem; /* Redusert bunnmargin */
   }
 
-  .cards {
-    grid-template-columns: 1fr; /* én kolonne */
-    gap: 1.5rem;
+  .cards { /* Én kolonne på mobil */
+    grid-template-columns: 1fr; /* En kolonne */
+    gap: 1.5rem; /* Mindre avstand mellom kort */
   }
 
-  .card {
-    padding: 1.5rem;
+  .card { /* Mindre padding på kort */
+    padding: 1.5rem; /* Redusert indre marg */
   }
 
-  .priceTag {
-    font-size: 1.75rem;
+  .priceTag { /* Litt mindre priskilt */
+    font-size: 1.75rem; /* Redusert fontstørrelse */
   }
 
-  .card h3 {
-    font-size: 1.25rem;
+  .card h3 { /* Litt mindre overskrift */
+    font-size: 1.25rem; /* Redusert fontstørrelse */
   }
 
-  .cta {
-    width: 100%;
-    font-size: 1rem;
+  .cta { /* Mobil knapp */
+    width: 100%; /* Full bredde */
+    font-size: 1rem; /* Normal fontstørrelse */
   }
 }
+
 
 
 /* ✅ Classnames brukt i Price.jsx-komponenten

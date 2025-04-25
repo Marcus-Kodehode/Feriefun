@@ -1,60 +1,59 @@
 /* src/global.css */
+
+/* Importerer Orbitron-font fra Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { /* Universalselektor: gjelder for alle elementer */
+  margin: 0;           /* Fjerner all standard margin */
+  padding: 0;          /* Fjerner all standard padding */
+  box-sizing: border-box; /* Inkluderer padding og border i elementets bredde/høyde */
+} /* Slutt på universalselektor */
 
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background: #1a1d2e; /* eller den samme gradienten som resten av siden */
-  overflow-x: hidden;
-  scroll-padding-top: 200px; /* juster etter høyden på navbaren din */
-  scroll-behavior: smooth;
-}
+html, body { /* Setter grunnleggende stil for html- og body-elementene */
+  height: 100%;        /* Sørger for at dokumentet fyller hele høyden */
+  margin: 0;           /* Fjerner margin igjen hvis noen nettleser legger på */
+  padding: 0;          /* Fjerner padding igjen hvis noen nettleser legger på */
+  background: #1a1d2e; /* Bakgrunnsfarge eller gradient for hele siden */
+  overflow-x: hidden;  /* Hindrer horisontal scroll */
+  scroll-padding-top: 200px; /* Gir plass øverst når man scroller til ankre */
+  scroll-behavior: smooth; /* Jevn scroll-animasjon ved interne lenker */
+} /* Slutt html, body */
 
-#root {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-}
+#root { /* Hovedcontaineren for React-appen */
+  min-height: 100%;    /* Sikrer at root fyller minst hele høyden */
+  display: flex;       /* Aktiverer flexbox for innhold */
+  flex-direction: column; /* Stabler barn vertikalt */
+} /* Slutt #root */
 
-.section {
-  min-height: calc(100vh - 5rem);
-  scroll-margin-top: 5rem;
-  padding: 6rem 2rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
+.section { /* Felles stil for seksjoner som skal fades inn */
+  min-height: calc(100vh - 5rem); /* Tar hele skjermhøyden minus navbar */
+  scroll-margin-top: 5rem; /* Plass når man scroller til seksjonen */
+  padding: 6rem 2rem 2rem; /* Innvendig margin: topp, sider, bunn */
+  display: flex;       /* Flexbox for sentrering */
+  align-items: center; /* Vertikal sentrering av innhold */
+  justify-content: center; /* Horisontal sentrering */
+  opacity: 0;          /* Starter usynlig */
+  transform: translateY(40px); /* Starter litt nede */
+  transition: opacity 0.6s ease, transform 0.6s ease; /* Animasjon ved endring */
+} /* Slutt .section */
 
+section.show { /* Når seksjonen skal vises */
+  opacity: 1;         /* Blir synlig */
+  transform: translateY(0); /* Flyttes til normal posisjon */
+  max-height: 100vh;  /* Maks høyde lik skjermhøyde */
+  animation: fade-in-down 0.8s ease forwards; /* Spiller av fade-in-down-animasjon */
+} /* Slutt section.show */
 
+section.hide { /* Når seksjonen skjules */
+  opacity: 0;         /* Gjøres usynlig */
+  transform: scale(0.95); /* Skaleres litt ned */
+  pointer-events: none; /* Blokkerer interaksjon */
+  max-height: 0;      /* Tar ikke plass */
+  overflow: hidden;   /* Skjuler alt innhold */
+  transition: opacity 0.4s ease, transform 0.4s ease, max-height 0.4s ease; /* Jevn overgang */
+} /* Slutt section.hide */
 
-section.show {
-  opacity: 1;
-  transform: translateY(0);
-  max-height: 100vh; /* eller auto hvis du vil ha full høyde */
-  animation: fade-in-down 0.8s ease forwards;
-}
-
-
-section.hide {
-  opacity: 0;
-  transform: scale(0.95);
-  pointer-events: none;
-  max-height: 0;
-  overflow: hidden;
-  transition: opacity 0.4s ease, transform 0.4s ease, max-height 0.4s ease;
-}
-
-/* Scroll offset for sticky header (desktop og mobil) */
-section[id] {
-  scroll-margin-top: 6.5rem; /* tilsvarende høyden på headeren */
-}
+/* Justerer scroll-offset for alle seksjoner med id (brukes for interne lenker) */
+section[id] { 
+  scroll-margin-top: 6.5rem; /* Høyden på headeren for korrekt anker-posisjon */
+} /* Slutt section[id] */
