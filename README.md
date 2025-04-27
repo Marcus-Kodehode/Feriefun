@@ -118,9 +118,10 @@ Som ny student innen frontend og programmering har dette prosjektet lært meg ek
 - Hvordan bygge gjenbrukbare komponenter i React  
 - Hvordan debugge komplekse state-håndteringer og IntersectionObserver-feil  
 
-> “With great power comes great responsibility… to refactor.”  
-
-Jeg er spesielt stolt av hvordan navigasjonen følger scroll-posisjonen, og at “Useless Facts” ble løst både med lokal mini­database og placeholder for API-kall. Dette er mitt mest komplekse og lærerike prosjekt så langt — og jeg gleder meg til å ta det videre!  
+// 💍 One bug to find them
+// 🔥 One fix to bring them all
+// 💡 And in the darkness bind them.  
+ 
 
 Takk for at du kikker på NapFlix! 😴✨  
 
