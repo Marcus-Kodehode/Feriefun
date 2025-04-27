@@ -226,6 +226,17 @@ input:focus,
   to   { opacity: 1; transform: translateY(0); }     /* Ender synlig i normal posisjon */
 }
 
+@media (max-width: 768px) {
+  .signupSection {
+    /* Fra 6rem topp-padding → 3rem */
+    padding-top: 0.5rem !important;
+  }
+
+  p.subtext {
+    padding: 2rem;
+  }
+}
+
 
 
 

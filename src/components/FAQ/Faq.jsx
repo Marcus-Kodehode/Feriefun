@@ -62,7 +62,7 @@ export default function Faq() {
   ]
 
   return (
-    <section id="faq" className={styles.wrapper}>
+    <div className={styles.wrapper}>
       <h2 className={styles.title}>NapFlix Useless Facts</h2>
 
       <button className={styles.button} onClick={handleRandom}>
@@ -80,6 +80,6 @@ export default function Faq() {
           </div>
         ))}
       </div>
-    </section>
+      </div>
   )
 }

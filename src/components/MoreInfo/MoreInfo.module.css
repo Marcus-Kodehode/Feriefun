@@ -84,6 +84,11 @@
   @media (min-width: 769px) {
     /* skjul den på desktop */
     .scrollToTop { display: none; }
+
+    .moreInfoSection {
+      /* Fra 4rem bunn-padding → 2rem */
+      padding-bottom: 2rem !important;
+    }
   }
 
   /* ✅ Classnames brukt i MoreInfo.jsx-komponenten

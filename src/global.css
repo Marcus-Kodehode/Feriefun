@@ -54,6 +54,46 @@ section.hide { /* Når seksjonen skjules */
 } /* Slutt section.hide */
 
 /* Justerer scroll-offset for alle seksjoner med id (brukes for interne lenker) */
-section[id] { 
-  scroll-margin-top: 6.5rem; /* Høyden på headeren for korrekt anker-posisjon */
-} /* Slutt section[id] */
+section[id] {
+  scroll-margin-top: 6.5rem; /* sørger for luft når du trykker nav-lenker */
+}
+@media (max-width: 768px) {
+
+  html {
+    scroll-padding-top: 8rem; /* matcher header-høyde på mobil */
+  }
+
+  section[id] {
+    scroll-margin-top: 4rem;
+  }
+
+  .section.show,
+  .section.hide {
+    opacity: 1 !important;
+    max-height: unset !important;
+    overflow: visible !important;
+    transform: none !important;
+    transition: none !important;
+    pointer-events: auto !important;
+  }
+
+  #faq {
+    display: block !important;
+    min-height: auto !important;
+    padding: 1rem !important;
+  }
+  section#faq.section {
+    display: block !important;
+    min-height: auto !important;
+    padding: 0 !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+  }
+
+  /* 2) Gi inner‐wrapperen (modulen) komprimert padding */
+  section#faq > div {
+    padding: 3rem 1.5rem 4rem !important;
+  }
+}
+
+

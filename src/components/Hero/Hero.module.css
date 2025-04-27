@@ -24,7 +24,7 @@
 
 .content {
   flex: 1 1 450px;
-  padding: 3rem;
+  padding: 1rem;
   color: #fff;
 }
 
@@ -171,8 +171,13 @@
   .content,
   .imageWrapper {
     flex: 1 1 100%;
-    padding: 1.5rem 1rem;
+    padding: 2rem 2rem 2rem !important;
     text-align: center;
+  }
+  .hero {
+    /* Fjern full-skjerm-høyde og reduser topp-padding */
+    padding: 2rem 2rem 2rem !important;
+    min-height: auto !important;
   }
 }
 

@@ -10,13 +10,18 @@ export default function Nav() {
 
   const toggleMenu = () => setOpen(o => !o)
 
-  // 🔒 Lås bakgrunnsrulling når menyen er åpen
+  const closeMenu = () => {
+    setOpen(false)
+    document.body.style.overflow = '' // re-aktivér scrolling
+  }
+
+  // 🔒 Lås bakgrunnsrulling når meny er åpen
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [open])
 
-  // 🧠 Autofokus første lenke når meny åpnes
+  // 🧠 Autofokus første lenke ved åpning
   useEffect(() => {
     if (open && menuRef.current) {
       const focusable = menuRef.current.querySelectorAll('a, button')
@@ -24,11 +29,11 @@ export default function Nav() {
     }
   }, [open])
 
-  // ⌨️ Escape + Tab-nav mellom elementer
+  // ⌨️ Escape + Tab navigering
   useEffect(() => {
     const onKey = e => {
       if (e.key === 'Escape' && open) {
-        setOpen(false)
+        closeMenu()
         toggleRef.current?.focus()
       }
       if (e.key === 'Tab' && open && menuRef.current) {
@@ -47,19 +52,21 @@ export default function Nav() {
     return () => document.removeEventListener('keydown', onKey)
   }, [open])
 
-  // 📡 Scroll tracker: Hvilken seksjon vises nå?
+  // 📡 Scroll-tracker for aktiv seksjon
   useEffect(() => {
     const sections = document.querySelectorAll('section[id]')
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id)
-          }
-        })
-      },
-      { threshold: 0.6 }
-    )
+       // Responsiv terskel: 0.3 på mobil for korte seksjoner, ellers 0.6
+       const isMobile = window.matchMedia('(max-width: 768px)').matches
+       const observer = new IntersectionObserver(
+         entries => {
+           entries.forEach(entry => {
+             if (entry.isIntersecting) {
+               setActiveSection(entry.target.id)
+             }
+           })
+         },
+         { threshold: isMobile ? 0.3 : 0.6 }
+       )
     sections.forEach(section => observer.observe(section))
     return () => observer.disconnect()
   }, [])
@@ -67,16 +74,10 @@ export default function Nav() {
   return (
     <>
       <header className={styles.navbar}>
-        {/* Logo som hjem-anker */}
-        <a
-          href="#hero"
-          className={styles.logo}
-          onClick={() => setOpen(false)}
-        >
+        <a href="#hero" className={styles.logo} onClick={closeMenu}>
           NapFlix
         </a>
 
-        {/* Hamburger-knapp */}
         <button
           ref={toggleRef}
           className={`${styles.toggle} ${open ? styles.open : ''}`}
@@ -87,58 +88,28 @@ export default function Nav() {
           <span /><span /><span />
         </button>
 
-        {/* Navigasjonsmeny */}
         <nav
           ref={menuRef}
           className={`${styles.menu} ${open ? styles.open : ''}`}
         >
-
           <ul>
-            <li>
-              <a
-                href="#hero"
-                className={`${styles.navButton} ${activeSection === 'hero' ? styles.active : ''}`}
-                onClick={() => setOpen(false)}
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="#price"
-                className={`${styles.navButton} ${activeSection === 'price' ? styles.active : ''}`}
-                onClick={() => setOpen(false)}
-              >
-                Price
-              </a>
-            </li>
-            <li>
-              <a
-                href="#more-info"
-                className={`${styles.navButton} ${activeSection === 'more-info' ? styles.active : ''}`}
-                onClick={() => setOpen(false)}
-              >
-                More Info
-              </a>
-            </li>
-            <li>
-              <a
-                href="#signup"
-                className={`${styles.navButton} ${activeSection === 'signup' ? styles.active : ''}`}
-                onClick={() => setOpen(false)}
-              >
-                Sign-Up
-              </a>
-            </li>
-            <li>
-              <a
-                href="#faq"
-                className={`${styles.navButton} ${activeSection === 'faq' ? styles.active : ''}`}
-                onClick={() => setOpen(false)}
-              >
-                FAQ
-              </a>
-            </li>
+            {[
+              { id: 'hero', label: 'Home' },
+              { id: 'price', label: 'Price' },
+              { id: 'more-info', label: 'More Info' },
+              { id: 'signup', label: 'Sign-Up' },
+              { id: 'faq', label: 'FAQ' }
+            ].map(({ id, label }) => (
+              <li key={id}>
+                <a
+                  href={`#${id}`}
+                  className={`${styles.navButton} ${activeSection === id ? styles.active : ''}`}
+                  onClick={closeMenu}
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
           </ul>
         </nav>
       </header>

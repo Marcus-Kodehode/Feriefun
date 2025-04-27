@@ -72,6 +72,21 @@
     line-height: 1.6;
     font-family: 'Orbitron', sans-serif;
   }
+
+  @media (max-width: 768px) {
+
+      /* Tar bort parent-section sin full-skjerm/flex-layout på mobil */
+  :global(section#faq.section) {
+    display: block !important;
+    min-height: auto !important;
+    padding: 0 !important;
+  }
+
+  .wrapper {
+    padding: 3rem 1.5rem 3rem !important;
+  }
+  }
+  
   
   
   /* ✅ Classnames brukt i Faq.jsx-komponenten
